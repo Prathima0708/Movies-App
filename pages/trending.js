@@ -16,37 +16,37 @@
 
 
 
-import React from 'react'
-import axios from 'axios';
-import { useEffect,useState } from 'react';
-import SingleContent from '../components/SingleContent';
-import CustomPagination from '../components/CustomPagination';
+import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import SingleContent from "../components/SingleContent";
+import CustomPagination from "../components/CustomPagination";
 
 
+const trending = () => {
+  const [page, setPage] = useState(1);
+  const [content, setContent] = useState([]);
+  const fetchTrending = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/trending/all/week?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&page=${page}`
+    );
 
-const contact = () => {
-  const [page,setPage]=useState(1)
-const [content, setContent] = useState([])
-  const fetchTrending=async()=>{
-  
-    const {data}=await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&page=${page}`)
-
-    setContent(data.results)
-  }
+    setContent(data.results);
+  };
 
   useEffect(() => {
-    fetchTrending()
-  }, [page])
-
-
-
+    fetchTrending();
+  }, [page]);
 
   return (
     <div className="pageTitle">
       Trending
-    
+      
       <div className="flex flex-wrap justify-around">
-      {content && content.map((c)=>    <SingleContent
+        {content &&
+          content.map((c) => (
+            
+            <SingleContent 
               key={c.id}
               id={c.id}
               poster={c.poster_path}
@@ -54,16 +54,43 @@ const [content, setContent] = useState([])
               date={c.first_air_date || c.release_date}
               media_type={c.media_type}
               vote_average={c.vote_average}
-            />)}
+            />
+          ))}
       </div>
-      
+     
       <CustomPagination setPage={setPage} />
-      
     </div>
   );
-}
+};
 
-export default contact
+export default trending;
+
+
+
+
+
+
+// import axios from 'axios'
+// import React from 'react'
+// import TrendingMovie from '../components/TrendingMovie'
+
+// const trending = ({movies}) => {
+//   return (
+//     <TrendingMovie movies={movies.results} />
+//   )
+// }
+
+// export default trending
+
+// export async function getStaticProps(){
+//   const res=await axios(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.API_KEY}`)
+//   const movies=res.data
+//   return {
+//     props:{
+//       movies
+//     }
+//   }
+// }
 
 
 

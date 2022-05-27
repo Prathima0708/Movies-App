@@ -12,6 +12,8 @@ import { useState ,useEffect} from 'react';
 
 import { Button } from '@mui/material';
 import { img_500, unavailable, unavailableLandscape } from '../config';
+import Link from 'next/link';
+import Carousel from '../Carousel/Carousel';
 
 
 
@@ -62,7 +64,8 @@ useEffect(() => {
 
   return (
     <>
-      <div onClick={handleOpen} className={classes.media}>{children}</div>
+    
+      <div onClick={handleOpen} className={classes.media} >{children}</div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -99,7 +102,7 @@ useEffect(() => {
         {content.overview}
     </span>
     <div>
-{/* <Carousel media_type={media_type} id={id} /> */}
+<Carousel media_type={media_type} id={id} />
     </div>
  <Button variant='contained' startIcon={<YouTubeIcon/>} color='secondary' target='_blank' href={`https://www.youtube.com/watch?v=${video}`}>Watch the Trailer</Button>
 </div>
@@ -107,6 +110,7 @@ useEffect(() => {
           </Box>
         </Fade>
       </Modal>
+     
     </>
   );
 }

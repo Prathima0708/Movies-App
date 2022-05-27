@@ -44,7 +44,7 @@ const Genres = ({
       <Chip key={genre.id} label={genre.name} style={{margin:2}} size="small" color='primary' clickable onDelete={()=>handleRemove(genre)} />
     ))}
 
-    {genres && genres?.map((genre)=>(
+    {genres && genres.map((genre)=>(
       <Chip key={genre.id} label={genre.name} style={{margin:2}} size="small" clickable onClick={()=>handleAdd(genre)} />
     ))}
     </div>

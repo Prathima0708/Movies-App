@@ -22,6 +22,10 @@ const Hero = () => {
     <Link href="/search">
     <button className='bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3'>Search</button>
     </Link>
+
+    <Link href="/tv">
+    <button className='bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3'>TV Series</button>
+    </Link>
    
 </div>
   )

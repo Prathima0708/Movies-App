@@ -1,5 +1,6 @@
 import axios from "axios";
 import { server } from "../components/config";
+
 import Hero from "../components/Hero";
 import PopularMovie from "../components/PopularMovie";
 
