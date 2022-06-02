@@ -4,6 +4,7 @@ import axios from 'axios';
 import Chip from '@mui/material/Chip';
 
 
+
 const Genres = ({
     selectedGenres,
     setSelectedGenres,
@@ -12,6 +13,8 @@ const Genres = ({
     type,
     setPage
 }) => {
+
+
 
   const handleAdd=(genre)=>{
     setSelectedGenres([...selectedGenres,genre])
@@ -33,8 +36,9 @@ const Genres = ({
 
     useEffect(() => {
        fetchGenres()
+     
        return ()=>{
-           setGenres({})
+           setGenres([])
        }
     },[])
   return (
@@ -52,3 +56,20 @@ const Genres = ({
 }
 
 export default Genres
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

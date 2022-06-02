@@ -41,6 +41,7 @@ const movies = () => {
         setGenres={setGenres}
         setPage={setPage}
       />
+    
       <div className="flex flex-wrap justify-around">
         {content &&
           content.map((c) => (
@@ -63,3 +64,27 @@ const movies = () => {
 };
 
 export default movies;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
