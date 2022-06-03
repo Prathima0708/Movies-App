@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import CustomPagination from "../components/CustomPagination";
 import Genres from "../components/Genres/Genres";
+import useStore from "../components/Genres/store";
 import useGenres from "../components/Genres/useGenres";
 
 import SingleContent from "../components/SingleContent";
@@ -17,6 +18,7 @@ const movies = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genres, setGenres] = useState([]);
   const genreforURL=useGenres(selectedGenres)
+  // const genres = useStore((state) => state.genres);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(`
@@ -41,6 +43,9 @@ const movies = () => {
         setGenres={setGenres}
         setPage={setPage}
       />
+
+      {/* <Genres  /> */}
+   
     
       <div className="flex flex-wrap justify-around">
         {content &&

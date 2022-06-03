@@ -4,6 +4,7 @@
 
 
 import { Badge } from '@mui/material'
+import Image from 'next/image';
 import { img_300, unavailable } from './config';
 import ContentModal from './Modal/Modal';
 
@@ -28,6 +29,7 @@ const SingleContent = ({
         src={poster ? `${img_300}${poster}` : unavailable}
         alt={title}
       />
+      
       <b className='w-full text-center text-xl p-2'>{title}</b>
       <span className="subTitle">
         {media_type === "tv" ? "TV Series" : "Movie"}
