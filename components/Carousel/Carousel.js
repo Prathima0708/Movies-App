@@ -1,34 +1,24 @@
-import React from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import { useState,useEffect } from 'react';
-import axios from 'axios';
-import { img_300, noPicture } from '../config';
-import classes from './Carousel.module.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import { img_300, noPicture } from "../config";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const items = [
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-];
-
-const Carousel = ({media_type,id}) => {
-  const [credits, setCredits] = useState([])
+const Carousel = ({ media_type, id }) => {
+  const [credits, setCredits] = useState([]);
 
   const items = credits.map((c) => (
-    <div className="carouselItem">
+    <div className="carouselItem" key={c?.name}>
       <img
         src={c.profile_path ? `${img_300}/${c.profile_path}` : noPicture}
         alt={c?.name}
         onDragStart={handleDragStart}
-        
       />
-      <b >{c?.name}</b>
+      <b>{c?.name}</b>
     </div>
   ));
-
 
   const responsive = {
     0: {
@@ -50,12 +40,20 @@ const Carousel = ({media_type,id}) => {
   };
 
   useEffect(() => {
-    fetchCredits()
-  }, [])
+    fetchCredits();
+  }, []);
 
   return (
-    <AliceCarousel autoPlay responsive={responsive} infinite disableDotsControls disableButtonsControls mouseTracking items={items} />
+    <AliceCarousel
+      autoPlay
+      responsive={responsive}
+      infinite
+      disableDotsControls
+      disableButtonsControls
+      mouseTracking
+      items={items}
+    />
   );
-}
+};
 
-export default Carousel
+export default Carousel;

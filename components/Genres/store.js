@@ -16,24 +16,16 @@ import create from "zustand";
 
 // export default useStore
 
-
-
 const useStore = create((set) => ({
   genres: [],
   fetch: async () => {
-    const response = await axios.get('https://api.themoviedb.org/3/genre/list?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US')
-    set({ genres: await response.data.results })
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/genre/list?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US"
+    );
+    set({ genres: await response.data.results });
   },
-}))
-export default useStore
-
-
-
-
-
-
-
-
+}));
+export default useStore;
 
 // import axios from "axios";
 // import create from "zustand";

@@ -16,40 +16,22 @@
 
 // export default TrendingMovie
 
+import React from "react";
+import { img_300, unavailable } from "./config";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React from 'react'
-import { img_300, unavailable } from './config'
-
-const TrendingMovie = ({title,index,overview,poster}) => {
-  const IMAGES_API='https://image.tmdb.org/t/p/w500/'
+const TrendingMovie = ({ title, index, overview, poster }) => {
+  const IMAGES_API = "https://image.tmdb.org/t/p/w500/";
   return (
     <div key={index}>
-<h3>{title}</h3>
-<img
-        className='rounded-lg'
+      <h3>{title}</h3>
+      <img
+        className="rounded-lg"
         src={poster ? `${img_300}${poster}` : unavailable}
         alt={title}
       />
-<p>{overview}</p>
+      <p>{overview}</p>
     </div>
-  )
-}
+  );
+};
 
-export default TrendingMovie
-
-
-
-
+export default TrendingMovie;

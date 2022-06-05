@@ -14,9 +14,9 @@ const Meta = ({ keywords, description, title }) => {
 };
 
 Meta.defaultProps = {
-  title: 'WatchMe',
-  keywords: 'movie app, fre movies, popular movies',
-  description: 'watch movie for free'
-}
+  title: "WatchMe",
+  keywords: "movie app, fre movies, popular movies",
+  description: "watch movie for free",
+};
 
 export default Meta;

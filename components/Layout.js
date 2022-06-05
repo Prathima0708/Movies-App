@@ -1,19 +1,17 @@
-import React from 'react'
-import Footer from './Footer'
-import Meta from './Meta'
-import Navbar from './Navbar'
+import React from "react";
+import Footer from "./Footer";
+import Meta from "./Meta";
+import Navbar from "./Navbar";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
-    <Meta />
-    <Navbar />
-    <main>
-{children}
-    </main>
-    <Footer />
+      <Meta />
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

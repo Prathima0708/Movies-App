@@ -31,7 +31,6 @@ const Genres = ({
     );
     setGenres(data.genres);
   };
-  console.log(genres);
 
   useEffect(() => {
     fetchGenres();
@@ -72,16 +71,6 @@ const Genres = ({
 
 export default Genres;
 
-
-
-
-
-
-
-
-
-
-
 // import { Chip } from '@mui/material';
 
 // import React, { useEffect } from 'react'
@@ -91,8 +80,6 @@ export default Genres;
 //   const genres = useStore((state) => state.genres);
 
 //   const fetch = useStore((state) => state.fetch);
- 
- 
 
 //   useEffect(()=>{
 //     fetch()

@@ -12,17 +12,13 @@
 
 // export default contact
 
-
-
-
-
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SingleContent from "../components/SingleContent";
 import CustomPagination from "../components/CustomPagination";
 
-const trending = () => {
+const Trending = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const fetchTrending = async () => {
@@ -40,11 +36,9 @@ const trending = () => {
   return (
     <div className="pageTitle">
       Trending
-
       <div className="flex flex-wrap justify-around">
         {content &&
           content.map((c) => (
-
             <SingleContent
               key={c.id}
               id={c.id}
@@ -56,18 +50,12 @@ const trending = () => {
             />
           ))}
       </div>
-
       <CustomPagination setPage={setPage} />
     </div>
   );
 };
 
-export default trending;
-
-
-
-
-
+export default Trending;
 
 // import axios from 'axios'
 // import React, { useState } from 'react'
@@ -91,10 +79,6 @@ export default trending;
 //     }
 //   }
 // }
-
-
-
-
 
 // import React, { useEffect, useState } from "react";
 // import CustomPagination from "../components/CustomPagination";
