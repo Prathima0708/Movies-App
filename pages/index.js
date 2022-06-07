@@ -3,12 +3,16 @@ import { server } from "../components/config";
 
 import Hero from "../components/Hero";
 import PopularMovie from "../components/PopularMovie";
+import Genres from "../components/ZustandPractice/components/Genres";
+import Movies from "../components/ZustandPractice/components/Movies";
 
 export default function Home({ movies }) {
   return (
-    <div className="bg-gray-700">
+    <div>
       <Hero />
       <PopularMovie movies={movies.results} />
+      <Genres />
+        <Movies />
     </div>
   );
 }
