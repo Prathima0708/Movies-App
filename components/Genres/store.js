@@ -47,7 +47,7 @@ import create from "zustand";
 export const useGenres = create((set) => ({
   genres: [],
   selectedGenres: [],
-
+  // setSelectedGenres: (selectedGenres) => set(() => ({ selectedGenres: selectedGenres })),
 
   setGenres: (genres) => set(() => ({ genres: genres })),
  
@@ -58,4 +58,13 @@ export const useGenres = create((set) => ({
     set((state) => ({
       selectedGenres: state.selectedGenres.filter((selected) => selected.id !== genre.id),
     })),
+
+// useURL:(selectedGenres)=>{
+//   const GenreIds =  selectedGenres.map((g) => g.id);
+//   return  GenreIds.reduce((acc, curr) => acc + "," + curr);
+// }
+    
+    
+
+   
 }));
