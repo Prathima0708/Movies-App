@@ -76,16 +76,10 @@
 
 
 
-
-
-
-
 // import { Button } from "@mui/material";
 // import axios from "axios";
 // import { useEffect } from "react";
 // import { useGenres } from "./store";
-
-
 
 // export default function Genres({type}) {
 //   const genres = useGenres((state) => state.genres);
@@ -93,8 +87,6 @@
 //   const setGenres = useGenres((state) => state.setGenres);
 //   const addSelectedGenre = useGenres((state) => state.addSelectedGenre);
 //   const removeSelectedGenre = useGenres((state) => state.removeSelectedGenre);
-
-
 
 //     const fetchGenres = async () => {
 //     const { data } = await axios.get(
@@ -111,8 +103,6 @@
 //       setGenres([]);
 //     };
 //   }, []);
-
-
 
 //   function handleGenre(type) {
 //     const isGenrePresent = selectedGenres.find(
@@ -144,7 +134,7 @@
 //           </Button>
 //         );
 //       })}
-      
+
 //     </div>
 //   );
 // }
@@ -160,28 +150,22 @@ import axios from "axios";
 import Chip from "@mui/material/Chip";
 import { useGenres } from "./store";
 
-const Genres = ({
- 
-  
-
-  type,
-  setPage,
-}) => {
-    const genres = useGenres((state) => state.genres);
+const Genres = ({ type, setPage }) => {
+  const genres = useGenres((state) => state.genres);
   const selectedGenres = useGenres((state) => state.selectedGenres);
   const setGenres = useGenres((state) => state.setGenres);
   const addGenres = useGenres((state) => state.addGenres);
   const removeGenres = useGenres((state) => state.removeGenres);
 
   const handleAdd = (genre) => {
-    addGenres(genre)
-    setGenres(genres.filter((g) => g.id !== genre.id))
+    addGenres(genre);
+    setGenres(genres.filter((g) => g.id !== genre.id));
     setPage(1);
   };
 
   const handleRemove = (genre) => {
-  removeGenres(genre)
-  setGenres([...genres, genre])
+    removeGenres(genre);
+    setGenres([...genres, genre]);
     setPage(1);
   };
 
@@ -190,7 +174,7 @@ const Genres = ({
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`
     );
     setGenres(data.genres);
-    console.log(data.genres)
+    console.log(data.genres);
   };
 
   useEffect(() => {
@@ -229,5 +213,4 @@ const Genres = ({
     </div>
   );
 };
-
 export default Genres;

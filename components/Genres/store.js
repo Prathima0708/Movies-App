@@ -40,31 +40,26 @@
 
 
 
-
-
 import create from "zustand";
-
 export const useGenres = create((set) => ({
   genres: [],
   selectedGenres: [],
   // setSelectedGenres: (selectedGenres) => set(() => ({ selectedGenres: selectedGenres })),
 
   setGenres: (genres) => set(() => ({ genres: genres })),
- 
 
-  addGenres: (genre) => set(state => ({ selectedGenres:[...state.selectedGenres ,genre] })),
+  addGenres: (genre) =>
+    set((state) => ({ selectedGenres: [...state.selectedGenres, genre] })),
 
   removeGenres: (genre) =>
     set((state) => ({
-      selectedGenres: state.selectedGenres.filter((selected) => selected.id !== genre.id),
+      selectedGenres: state.selectedGenres.filter(
+        (selected) => selected.id !== genre.id
+      ),
     })),
 
-// useURL:(selectedGenres)=>{
-//   const GenreIds =  selectedGenres.map((g) => g.id);
-//   return  GenreIds.reduce((acc, curr) => acc + "," + curr);
-// }
-    
-    
-
-   
+  // useURL:(selectedGenres)=>{
+  //   const GenreIds =  selectedGenres.map((g) => g.id);
+  //   return  GenreIds.reduce((acc, curr) => acc + "," + curr);
+  // }
 }));

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import React,  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CustomPagination from "../components/CustomPagination";
 import Genres from "../components/Genres/Genres";
 
@@ -15,19 +15,16 @@ const Movies = () => {
   const [numOfPages, setNumOfPages] = useState();
   // const [selectedGenres, setSelectedGenres] = useState([]);
   // const [genres, setGenres] = useState([]);
- 
+
   const genres = useGenres((state) => state.genres);
   const selectedGenres = useGenres((state) => state.selectedGenres);
-  
+
   const setGenres = useGenres((state) => state.setGenres);
 
   // const useURL = useGenres((state) => state.useURL);
   // const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
- 
 
   const genreforURL = useGenres1(selectedGenres);
-
-
 
   const fetchMovies = async () => {
     const { data } = await axios.get(`
@@ -43,18 +40,15 @@ const Movies = () => {
   return (
     <div className="pageTitle">
       Movies
-       <Genres
+      <Genres
         type="movie"
         selectedGenres={selectedGenres}
         // setSelectedGenres={setSelectedGenres}
         genres={genres}
         setGenres={setGenres}
         setPage={setPage}
-      /> 
-      
-{/* <Genres type="movie"/> */}
-
-
+      />
+      {/* <Genres type="movie"/> */}
       <div className="flex flex-wrap justify-around">
         {content &&
           content.map((c) => (
@@ -78,9 +72,6 @@ const Movies = () => {
 
 export default Movies;
 
-
-
-
 // import { Button } from "@mui/material";
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -89,9 +80,8 @@ export default Movies;
 // import useGenres1 from "../components/Genres/useGenres";
 // import SingleContent from "../components/SingleContent";
 
-
 // export default function Movies() {
- 
+
 //   const [page, setPage] = useState(1);
 //   const [numOfPages, setNumOfPages] = useState();
 //   const setMovies = useGenres((state) => state.setMovies);
@@ -126,7 +116,6 @@ export default Movies;
 //     <>
 //    <Genres type="movie" />
 //     <div className="flex flex-wrap justify-around">
-    
 
 // {selectedMovies &&
 //           selectedMovies.map((c) => (
@@ -144,8 +133,3 @@ export default Movies;
 //     </>
 //   );
 // }
-
-
-
-
-
