@@ -44,13 +44,14 @@ import create from "zustand";
 export const useGenres = create((set) => ({
   genres: [],
   selectedGenres: [],
-  // setSelectedGenres: (selectedGenres) => set(() => ({ selectedGenres: selectedGenres })),
+
+  setSelectedGenres: (selectedGenres) => set(() => ({ selectedGenres: selectedGenres })),
 
   setGenres: (genres) => set(() => ({ genres: genres })),
 
   addGenres: (genre) =>
     set((state) => ({ selectedGenres: [...state.selectedGenres, genre] })),
-
+    
   removeGenres: (genre) =>
     set((state) => ({
       selectedGenres: state.selectedGenres.filter(

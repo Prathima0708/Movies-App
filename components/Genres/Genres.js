@@ -156,6 +156,7 @@ const Genres = ({ type, setPage }) => {
   const setGenres = useGenres((state) => state.setGenres);
   const addGenres = useGenres((state) => state.addGenres);
   const removeGenres = useGenres((state) => state.removeGenres);
+  const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
 
   const handleAdd = (genre) => {
     addGenres(genre);
@@ -181,7 +182,7 @@ const Genres = ({ type, setPage }) => {
     fetchGenres();
 
     return () => {
-      setGenres([]);
+      setSelectedGenres([]);
     };
   }, []);
   return (

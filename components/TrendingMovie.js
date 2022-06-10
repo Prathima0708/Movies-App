@@ -16,6 +16,8 @@
 
 // export default TrendingMovie
 
+
+
 import React from "react";
 import { img_300, unavailable } from "./config";
 

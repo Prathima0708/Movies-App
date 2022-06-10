@@ -86,7 +86,7 @@ const TV = () => {
   const setGenres = useGenres((state) => state.setGenres);
 
   // const useURL = useGenres((state) => state.useURL);
-  // const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
+  const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
 
   const genreforURL = useGenres1(selectedGenres);
 
@@ -107,7 +107,7 @@ const TV = () => {
       <Genres
         type="tv"
         selectedGenres={selectedGenres}
-        // setSelectedGenres={setSelectedGenres}
+        setSelectedGenres={setSelectedGenres}
         genres={genres}
         setGenres={setGenres}
         setPage={setPage}

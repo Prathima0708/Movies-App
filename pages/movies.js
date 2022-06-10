@@ -1,12 +1,9 @@
 import axios from "axios";
-
 import React, { useState, useEffect } from "react";
 import CustomPagination from "../components/CustomPagination";
 import Genres from "../components/Genres/Genres";
-
 import { useGenres } from "../components/Genres/store";
 import useGenres1 from "../components/Genres/useGenres";
-
 import SingleContent from "../components/SingleContent";
 
 const Movies = () => {
@@ -15,16 +12,12 @@ const Movies = () => {
   const [numOfPages, setNumOfPages] = useState();
   // const [selectedGenres, setSelectedGenres] = useState([]);
   // const [genres, setGenres] = useState([]);
-
   const genres = useGenres((state) => state.genres);
   const selectedGenres = useGenres((state) => state.selectedGenres);
-
   const setGenres = useGenres((state) => state.setGenres);
-
-  // const useURL = useGenres((state) => state.useURL);
-  // const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
-
+  const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
   const genreforURL = useGenres1(selectedGenres);
+  // const useURL = useGenres((state) => state.useURL);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(`
@@ -43,7 +36,7 @@ const Movies = () => {
       <Genres
         type="movie"
         selectedGenres={selectedGenres}
-        // setSelectedGenres={setSelectedGenres}
+        setSelectedGenres={setSelectedGenres}
         genres={genres}
         setGenres={setGenres}
         setPage={setPage}
@@ -71,6 +64,10 @@ const Movies = () => {
 };
 
 export default Movies;
+
+
+
+
 
 // import { Button } from "@mui/material";
 // import axios from "axios";
