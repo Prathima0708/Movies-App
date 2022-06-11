@@ -3,6 +3,39 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 
+const variants = {
+  hidden: {
+    scale: 0.8,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+    },
+  },
+};
+
+const links = [
+  {
+    href: "/trending",
+    label: "Trending",
+  },
+  {
+    href: "/movies",
+    label: "Movies",
+  },
+  {
+    href: "/search",
+    label: "Search",
+  },
+  {
+    href: "/tv",
+    label: "TV Series",
+  },
+];
+
 const Hero = () => {
   return (
     <div className="text-center bg-white pb-10">
@@ -15,23 +48,7 @@ const Hero = () => {
           alt="welcome"
         />
       </div>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {
-            scale: 0.8,
-            opacity: 0,
-          },
-          visible: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-              delay: 0.4,
-            },
-          },
-        }}
-      >
+      <motion.div initial="hidden" animate="visible" variants={variants}>
         <h1 className="text-2xl text-gray-700 uppercase font-bold">
           Welcome to TMDB
         </h1>
@@ -40,29 +57,14 @@ const Hero = () => {
       <p className="text-gray-500">
         Produce FILM feature , TELEVISION and Game
       </p>
-      <Link href="/trending">
-        <button className="bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3">
-          Trending
-        </button>
-      </Link>
 
-      <Link href="/movies">
-        <button className="bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3">
-          Movies
-        </button>
-      </Link>
-
-      <Link href="/search">
-        <button className="bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3">
-          Search
-        </button>
-      </Link>
-
-      <Link href="/tv">
-        <button className="bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3">
-          TV Series
-        </button>
-      </Link>
+      {links.map(({ href, label }) => (
+        <Link href={href} key={label}>
+          <button className="bg-gray-700 text-sm text-white px-6 py-3 rounded mt-3 ml-3">
+            {label}
+          </button>
+        </Link>
+      ))}
     </div>
   );
 };
