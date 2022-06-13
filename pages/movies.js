@@ -19,6 +19,9 @@ const Movies = () => {
   const genreforURL = useGenres1(selectedGenres);
   // const useURL = useGenres((state) => state.useURL);
 
+  const show = numOfPages > 1 && (
+    <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+  );
   const fetchMovies = async () => {
     const { data } = await axios.get(`
     https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`);
@@ -56,18 +59,12 @@ const Movies = () => {
             />
           ))}
       </div>
-      {numOfPages > 1 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
-      )}
+      {show}
     </div>
   );
 };
 
 export default Movies;
-
-
-
-
 
 // import { Button } from "@mui/material";
 // import axios from "axios";

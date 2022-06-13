@@ -3,17 +3,15 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-
 import YouTubeIcon from "@mui/icons-material/YouTube";
-
 import classes from "./Modal.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
 import { Button } from "@mui/material";
 import { img_500, unavailable, unavailableLandscape } from "../config";
 import Link from "next/link";
 import Carousel from "../Carousel/Carousel";
+import Image from "next/image";
 
 const style = {
   position: "absolute",
@@ -36,7 +34,6 @@ export default function ContentModal({ children, media_type, id }) {
   const [open, setOpen] = React.useState(false);
   const [content, setContent] = useState([]);
   const [video, setVideo] = useState();
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
