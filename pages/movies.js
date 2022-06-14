@@ -17,14 +17,14 @@ const Movies = () => {
   const setGenres = useGenres((state) => state.setGenres);
   const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
   const genreforURL = useGenres1(selectedGenres);
-  // const useURL = useGenres((state) => state.useURL);
+  const url = `
+https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`;
 
   const show = numOfPages > 1 && (
     <CustomPagination setPage={setPage} numOfPages={numOfPages} />
   );
   const fetchMovies = async () => {
-    const { data } = await axios.get(`
-    https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`);
+    const { data } = await axios.get(url);
     setContent(data.results);
     setNumOfPages(data.total_pages);
   };

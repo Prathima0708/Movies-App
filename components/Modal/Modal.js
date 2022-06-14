@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -9,9 +10,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { img_500, unavailable, unavailableLandscape } from "../config";
-import Link from "next/link";
 import Carousel from "../Carousel/Carousel";
-import Image from "next/image";
 
 const style = {
   position: "absolute",
@@ -36,19 +35,26 @@ export default function ContentModal({ children, media_type, id }) {
   const [video, setVideo] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const fecthDataURL = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`;
+  const fecthVideoURL = `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`;
+
+  const portraitImg = content.poster_path
+    ? `${img_500}/${content.poster_path}`
+    : unavailable;
+  const landscapeImg = content.backdrop_path
+    ? `${img_500}/${content.poster_path}`
+    : unavailableLandscape;
+  const alt = content.name || content.title;
+  const span =
+    content.first_air_date || content.release_date || "-----".substring(0, 4);
 
   const fecthData = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`
-    );
+    const { data } = await axios.get(fecthDataURL);
     setContent(data);
   };
 
   const fecthVideo = async () => {
-    // const {data}=await axios.get(`https://api.themoviedb.org/3/${media_type}/${id}/videos/?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`)
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`
-    );
+    const { data } = await axios.get(fecthVideoURL);
     setVideo(data.results[0]?.key);
   };
 
@@ -79,33 +85,19 @@ export default function ContentModal({ children, media_type, id }) {
               <div className={classes.ContentModal}>
                 <img
                   className={classes.ContentModal__portrait}
-                  alt={content.name || content.title}
-                  src={
-                    content.poster_path
-                      ? `${img_500}/${content.poster_path}`
-                      : unavailable
-                  }
+                  alt={alt}
+                  src={portraitImg}
                 />
 
                 <img
                   className={classes.ContentModal__landscape}
-                  alt={content.name || content.title}
-                  src={
-                    content.backdrop_path
-                      ? `${img_500}/${content.poster_path}`
-                      : unavailableLandscape
-                  }
+                  alt={alt}
+                  src={landscapeImg}
                 />
 
                 <div className={classes.ContentModal__about}>
                   <span className={classes.ContentModal__title}>
-                    {content.name || content.title}(
-                    {(
-                      content.first_air_date ||
-                      content.release_date ||
-                      "-----"
-                    ).substring(0, 4)}
-                    )
+                    {alt}({span})
                   </span>
 
                   {content.tagline && (

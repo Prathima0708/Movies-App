@@ -72,10 +72,6 @@
 
 // export default Genres;
 
-
-
-
-
 // import { Button } from "@mui/material";
 // import axios from "axios";
 // import { useEffect } from "react";
@@ -139,11 +135,6 @@
 //   );
 // }
 
-
-
-
-
-
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -157,6 +148,7 @@ const Genres = ({ type, setPage }) => {
   const addGenres = useGenres((state) => state.addGenres);
   const removeGenres = useGenres((state) => state.removeGenres);
   const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
+  const url = `https://api.themoviedb.org/3/genre/${type}/list?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`;
 
   const handleAdd = (genre) => {
     addGenres(genre);
@@ -171,9 +163,7 @@ const Genres = ({ type, setPage }) => {
   };
 
   const fetchGenres = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/genre/${type}/list?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`
-    );
+    const { data } = await axios.get(url);
     setGenres(data.genres);
     console.log(data.genres);
   };

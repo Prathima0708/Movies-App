@@ -2,9 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 const errMsg = " The page you're looking for dosen't exist.";
+
 const NotFound = () => {
   const router = useRouter();
-
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/");

@@ -14,6 +14,13 @@ const Search = () => {
   const [content, setContent] = useState();
   const [numOfPages, setNumOfPages] = useState();
 
+  const url = `https://api.themoviedb.org/3/search/${
+    type ? "tv" : "movie"
+  }?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&query=${searchText}&page=${page}&include_adult=false`;
+  const dispage = numOfPages > 1 && (
+    <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+  );
+
   const darkTheme = createTheme({
     palette: {
       type: "dark",
@@ -24,11 +31,7 @@ const Search = () => {
   });
 
   const fetchSearch = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/search/${
-        type ? "tv" : "movie"
-      }?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&query=${searchText}&page=${page}&include_adult=false`
-    );
+    const { data } = await axios.get(url);
     setContent(data.results);
     setNumOfPages(data.total_pages);
   };
@@ -36,6 +39,7 @@ const Search = () => {
   useEffect(() => {
     window.scroll(0, 0);
     fetchSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, page]);
 
   return (
@@ -105,9 +109,7 @@ const Search = () => {
             <h2 className="text-black">No Movies Found</h2>
           ))}
       </div>
-      {numOfPages > 1 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
-      )}
+      {dispage}
     </div>
   );
 };

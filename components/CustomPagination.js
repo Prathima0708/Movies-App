@@ -1,9 +1,6 @@
-
-
 import React from "react";
 import { Pagination } from "@mui/material";
-// import { createMuiTheme, ThemeProvider } from "@material-ui/core";
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const darkTheme = createTheme({
   palette: {

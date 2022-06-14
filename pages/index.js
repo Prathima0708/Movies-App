@@ -1,6 +1,5 @@
 import axios from "axios";
 import { server } from "../components/config";
-
 import Hero from "../components/Hero";
 import PopularMovie from "../components/PopularMovie";
 import Genres from "../components/ZustandPractice/components/Genres";
@@ -12,7 +11,7 @@ export default function Home({ movies }) {
       <Hero />
       <PopularMovie movies={movies.results} />
       <Genres />
-        <Movies />
+      <Movies />
     </div>
   );
 }

@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { Badge } from "@mui/material";
-import Image from "next/image";
 import { img_300, unavailable } from "./config";
 import ContentModal from "./Modal/Modal";
 
@@ -11,21 +11,17 @@ const SingleContent = ({
   media_type,
   vote_average,
 }) => {
+  const color = vote_average > 6 ? "primary" : "secondary";
+  const imgSrc = poster ? `${img_300}${poster}` : unavailable;
+  const subTitle = media_type === "tv" ? "TV Series" : "Movie";
   return (
     <ContentModal media_type={media_type} id={id} className="cursor-pointer">
-      <Badge
-        badgeContent={vote_average}
-        color={vote_average > 6 ? "primary" : "secondary"}
-      />
-      <img
-        className="rounded-lg"
-        src={poster ? `${img_300}${poster}` : unavailable}
-        alt={title}
-      />
+      <Badge badgeContent={vote_average} color={color} />
+      <img className="rounded-lg" src={imgSrc} alt={title} />
 
       <b className="w-full text-center text-xl p-2">{title}</b>
       <span className="subTitle">
-        {media_type === "tv" ? "TV Series" : "Movie"}
+        {subTitle}
         <span className="w-full text-center text-xl p-2">{date}</span>
       </span>
     </ContentModal>

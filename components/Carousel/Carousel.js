@@ -1,18 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { img_300, noPicture } from "../config";
+import Image from "next/image";
 
 const handleDragStart = (e) => e.preventDefault();
 
 const Carousel = ({ media_type, id }) => {
+  const url = `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`;
   const [credits, setCredits] = useState([]);
 
   const items = credits.map((c) => (
     <div className="carouselItem" key={c?.name}>
       <img
-        src={c.profile_path ? `${img_300}/${c.profile_path}` : noPicture}
+        src={c?.profile_path ? `${img_300}/${c.profile_path}` : noPicture}
         alt={c?.name}
         onDragStart={handleDragStart}
       />
@@ -33,9 +36,7 @@ const Carousel = ({ media_type, id }) => {
   };
 
   const fetchCredits = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US`
-    );
+    const { data } = await axios.get(url);
     setCredits(data.cast);
   };
 

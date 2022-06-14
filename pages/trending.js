@@ -21,10 +21,9 @@ import CustomPagination from "../components/CustomPagination";
 const Trending = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
+  const url = `https://api.themoviedb.org/3/trending/all/week?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&page=${page}`;
   const fetchTrending = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/week?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&page=${page}`
-    );
+    const { data } = await axios.get(url);
 
     setContent(data.results);
   };
