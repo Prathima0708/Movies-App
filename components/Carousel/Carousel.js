@@ -4,7 +4,6 @@ import axios from "axios";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { img_300, noPicture } from "../config";
-import Image from "next/image";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -42,6 +41,7 @@ const Carousel = ({ media_type, id }) => {
 
   useEffect(() => {
     fetchCredits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

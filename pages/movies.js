@@ -17,8 +17,7 @@ const Movies = () => {
   const setGenres = useGenres((state) => state.setGenres);
   const setSelectedGenres = useGenres((state) => state.setSelectedGenres);
   const genreforURL = useGenres1(selectedGenres);
-  const url = `
-https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddcd9a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`;
 
   const show = numOfPages > 1 && (
     <CustomPagination setPage={setPage} numOfPages={numOfPages} />
@@ -31,6 +30,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=e6ab9cb5f394d693d47a56721ddc
 
   useEffect(() => {
     fetchMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, genreforURL]);
 
   return (

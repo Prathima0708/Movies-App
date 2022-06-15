@@ -42,6 +42,15 @@ const Search = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, page]);
 
+  const search =
+    searchText &&
+    !content &&
+    (type ? (
+      <h2 className="text-black">No Series Found</h2>
+    ) : (
+      <h2 className="text-black">No Movies Found</h2>
+    ));
+
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
@@ -101,13 +110,7 @@ const Search = () => {
             />
           ))}
 
-        {searchText &&
-          !content &&
-          (type ? (
-            <h2 className="text-black">No Series Found</h2>
-          ) : (
-            <h2 className="text-black">No Movies Found</h2>
-          ))}
+        {search}
       </div>
       {dispage}
     </div>
