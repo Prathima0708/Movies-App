@@ -10,8 +10,8 @@ export default function Home({ movies }) {
     <div>
       <Hero />
       <PopularMovie movies={movies.results} />
-      <Genres />
-      <Movies />
+      {/* <Genres /> */}
+      {/* <Movies /> */}
     </div>
   );
 }

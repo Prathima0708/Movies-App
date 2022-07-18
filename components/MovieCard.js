@@ -10,7 +10,7 @@ export const MovieCard = ({ movie }) => {
         position: "relative",
         zIndex: 1,
         background: "white",
-        scale: [1, 1.4, 1.2],
+        scale: [1, 1.4, 1.5],
         transition: {
           duration: 0.2,
         },
