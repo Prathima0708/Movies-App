@@ -19,10 +19,12 @@ const SingleContent = ({
       <Badge badgeContent={vote_average} color={color} />
       <img className="rounded-lg" src={imgSrc} alt={title} />
 
-      <b className="w-full text-center text-xl p-2">{title}</b>
-      <span className="subTitle">
+      <b className="w-full text-center text-xl p-2 text-white">{title}</b>
+      <span className="subTitle  text-white">
         {subTitle}
-        <span className="w-full text-center text-xl p-2">{date}</span>
+        <span className="w-full text-center text-xl p-2  text-white">
+          {date}
+        </span>
       </span>
     </ContentModal>
   );
