@@ -35,7 +35,7 @@ const Movies = () => {
 
   return (
     <div className="pageTitle">
-      Movies
+      
       <Genres
         type="movie"
         selectedGenres={selectedGenres}

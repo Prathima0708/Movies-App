@@ -34,7 +34,7 @@ const Trending = () => {
 
   return (
     <div className="pageTitle">
-      Trending
+      
       <div className="flex flex-wrap justify-around">
         {content &&
           content.map((c) => (

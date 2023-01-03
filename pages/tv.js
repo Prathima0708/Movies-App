@@ -95,7 +95,7 @@ const TV = () => {
 
   return (
     <div className="pageTitle">
-      Movies
+      
       <Genres
         type="tv"
         selectedGenres={selectedGenres}
